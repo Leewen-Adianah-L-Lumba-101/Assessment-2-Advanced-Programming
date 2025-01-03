@@ -1,30 +1,34 @@
-# -*- coding: utf-8 -*-
 """
 Created on Tue Dec 10 07:55:51 2024
 
-@author: hp
+@author: Leewen Lumba
 """
 
 # import requests
 # import sys
 import tmdbsimple as tmdb
 from tmdbv3api import TMDb
-
-tmdb = TMDb() # Create class instance
-
-tmdb.api_key = 'f8da1365ead9eb420c108f560ff80670'
-tmdb.language = 'en'
-tmdb.debug = True
-
 from tmdbv3api import Movie
 from tmdbv3api import Person
 from tmdbv3api import TV
 from tmdbv3api import Discover
+from dotenv import load_dotenv
+import os
 
+load_dotenv()
+api_key = os.getenv("API_KEY")
+
+# Create class object instances
 tv = TV()
 movie = Movie()
 discover = Discover()
 person = Person()
+tmdb = TMDb() 
+
+tmdb.api_key = api_key
+tmdb.language = 'en'
+tmdb.debug = True
+
 
 # recommendations = movie.recommendations(movie_id=111)
 
@@ -70,43 +74,43 @@ person = Person()
     
 
 # DONE AND DUSTED FOR MOVIE SEARCH ENGINE
-count = 0
+# count = 0
 
-usersearch = str(input("Find your show/actor/movie: "))
+# usersearch = str(input("Find your show/actor/movie: "))
 
-search = movie.search(usersearch)
+# search = movie.search(usersearch)
 
-for res in search:
-    try: 
-        print(res.title)
-        print(res.overview)
-        print(res.poster_path)
-        count += 1
+# for res in search:
+#     try: 
+#         print(res.title)
+#         print(res.overview)
+#         print(res.poster_path)
+#         count += 1
         
-    except AttributeError:
+#     except AttributeError:
         
-        print("No Movie Results")
-        search = tv.search(usersearch)
+#         print("No Movie Results")
+#         search = tv.search(usersearch)
         
-        for i in search:
-            try:
-                print(i.name)
-                print("results found")
-                break
+#         for i in search:
+#             try:
+#                 print(i.name)
+#                 print("results found")
+#                 break
                 
-            except AttributeError:
-                print("No TV Show Results")
+#             except AttributeError:
+#                 print("No TV Show Results")
                 
-                search = person.search(usersearch)
-                for i in search:
-                    try: 
-                        print("results found")
+#                 search = person.search(usersearch)
+#                 for i in search:
+#                     try: 
+#                         print("results found")
                         
-                    except AttributeError:
-                        print("No Actor Results")
-                        break
-                break
-        break
+#                     except AttributeError:
+#                         print("No Actor Results")
+#                         break
+#                 break
+#         break
 
     # if res.name == None:
     #     print("No Results")
