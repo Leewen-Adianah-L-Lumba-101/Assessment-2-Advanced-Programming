@@ -1,25 +1,36 @@
-# -*- coding: utf-8 -*-
 """
 Created on Sat Dec 28 19:36:12 2024
 
-@author: hp
+@author: Leewen Lumba
 """
-
 import customtkinter
 from tkinter import *
+import requests
+from PIL import Image
+from io import BytesIO
+from PIL import ImageTk
 import tmdbsimple as tmdb
 from tmdbv3api import TMDb
-
-tmdb = TMDb() # Create class instance
-
-tmdb.api_key = 'f8da1365ead9eb420c108f560ff80670'
-tmdb.language = 'en'
-tmdb.debug = True
-
 from tmdbv3api import Movie
 from tmdbv3api import Person
 from tmdbv3api import TV
 from tmdbv3api import Discover
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+api_key = os.getenv("API_KEY")
+
+# Create class object instances
+tv = TV()
+movie = Movie()
+discover = Discover()
+person = Person()
+tmdb = TMDb() 
+
+tmdb.api_key = api_key
+tmdb.language = 'en'
+tmdb.debug = True
 
 app = customtkinter.CTk()
 count = 0
