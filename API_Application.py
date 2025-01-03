@@ -10,7 +10,6 @@ import requests
 from PIL import Image
 from io import BytesIO
 from PIL import ImageTk
-import tmdbsimple as tmdb
 from tmdbv3api import TMDb
 from tmdbv3api import Movie
 from tmdbv3api import Person
