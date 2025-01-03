@@ -1,8 +1,7 @@
-# -*- coding: utf-8 -*-
 """
 Created on Thu Dec 26 20:00:11 2024
 
-@author: hp
+@author: Leewen Lumba
 """
 
 import customtkinter
@@ -17,10 +16,20 @@ from tmdbv3api import Movie
 from tmdbv3api import Person
 from tmdbv3api import TV
 from tmdbv3api import Discover
+from dotenv import load_dotenv
+import os
 
-tmdb = TMDb() # Create class instance
+load_dotenv()
+api_key = os.getenv("API_KEY")
 
-tmdb.api_key = 'f8da1365ead9eb420c108f560ff80670'
+# Create class object instances
+tv = TV()
+movie = Movie()
+discover = Discover()
+person = Person()
+tmdb = TMDb() 
+
+tmdb.api_key = api_key
 tmdb.language = 'en'
 tmdb.debug = True
 
