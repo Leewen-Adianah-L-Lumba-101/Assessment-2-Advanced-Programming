@@ -37,9 +37,10 @@ decider = ""
 count = customtkinter.IntVar()
 count.set(0)
 
-# Accessing API_KEY variable from environment path, 
+# Accessing API_KEY variable from environment path
 api_key = os.getenv("API_KEY")
 
+# Creating a class object instance for tmdb class, neccessary to implement api_key
 tmdb = TMDb()
 tmdb.api_key = api_key
 tmdb.language = 'en'
