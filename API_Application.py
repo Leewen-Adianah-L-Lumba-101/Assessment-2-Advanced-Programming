@@ -1,8 +1,6 @@
-# -*- coding: utf-8 -*-
 """
 Created on Sat Dec  7 14:52:49 2024
-
-@author: hp
+@author: Leewen Lumba
 """
 # Libraries needed for program
 import webbrowser
